@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protege tu Restaurante o Bar de Multas | Agencia Especializada</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <script async src="https://js.stripe.com/v3/buy-button.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        navy: {
+                            800: '#1a2942',
+                            900: '#0B192C',
+                            950: '#06101e',
+                        },
+                        brandOrange: {
+                            400: '#fb923c',
+                            500: '#f97316',
+                            600: '#ea580c',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-text {
+            background: linear-gradient(to right, #f97316, #fb923c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased flex flex-col min-h-screen">
+
+    <nav class="bg-navy-900 text-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex items-center space-x-2">
+                    <svg class="w-8 h-8 text-brandOrange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                    </svg>
+                    <span class="font-bold text-xl tracking-tight">marketing y negocios digitales <span class="text-brandOrange-500">+100 clientes satisfechos</span></span>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="#comprar" class="bg-brandOrange-500 hover:bg-brandOrange-600 text-white font-semibold py-2 px-6 rounded-full transition-colors duration-300 shadow-md">
+                        Evitar Multa Hoy
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header class="bg-navy-950 relative overflow-hidden">
+        <!-- Decorative background element -->
+        <div class="absolute inset-0 opacity-10">
+            <svg class="h-full w-full" xmlns="http://www.w3.org/2000/svg" id="patternId" width="100%" height="100%">
+                <defs>
+                    <pattern id="a" patternUnits="userSpaceOnUse" width="40" height="40" patternTransform="scale(2) rotate(0)">
+                        <rect x="0" y="0" width="100%" height="100%" fill="none"/>
+                        <path d="M11 6a5 5 0 01-5 5 5 5 0 01-5-5 5 5 0 015-5 5 5 0 015 5" stroke-width="1" stroke="none" fill="currentColor"/>
+                    </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#a)"/>
+            </svg>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 relative z-10 text-center lg:text-left flex flex-col lg:flex-row items-center">
+            <div class="lg:w-1/2 lg:pr-12">
+                <div class="inline-flex items-center space-x-2 bg-red-500/20 text-red-400 px-4 py-2 rounded-full font-medium mb-6 border border-red-500/30">
+                    <svg class="w-5 h-5 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                    <span>Alerta Urgente para Establecimientos</span>
+                </div>
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6">
+                    Tu Restaurante, Bar o Club puede ser acreedor a una multa de <span class="text-brandOrange-500 underline decoration-brandOrange-600">23 Millones.</span>
+                </h1>
+                <p class="text-lg md:text-xl text-gray-300 mb-8 max-w-2xl mx-auto lg:mx-0">
+                    La PROFECO vigila estrictamente la publicidad y los menús. Una palabra incorrecta o una imagen engañosa pueden arruinar tu negocio.
+                </p>
+                <a href="#comprar" class="inline-block bg-brandOrange-500 hover:bg-brandOrange-600 text-white font-bold py-4 px-10 rounded-full text-lg transition-transform transform hover:scale-105 shadow-[0_0_15px_rgba(249,115,22,0.5)]">
+                    Proteger mi negocio ahora
+                </a>
+            </div>
+            
+            <div class="lg:w-1/2 mt-16 lg:mt-0 relative">
+                <div class="absolute inset-0 bg-brandOrange-500 rounded-2xl blur-3xl opacity-20 animate-pulse"></div>
+                <div class="bg-navy-800 border border-navy-700 p-8 rounded-2xl shadow-2xl relative">
+                    <h3 class="text-2xl font-bold text-white mb-4 border-b border-navy-700 pb-4">¿Sabías qué?</h3>
+                    <div class="space-y-4 text-gray-300">
+                        <p class="text-lg">
+                            <span class="text-white font-semibold">Costos de las licencias:</span> Las tarifas de la FIFA por derechos de medios varían según la capacidad del lugar.
+                        </p>
+                        <div class="bg-navy-900 border-l-4 border-brandOrange-500 p-4 rounded-r-lg">
+                            <p class="text-2xl font-bold text-brandOrange-400">Comienzan en 1,000 USD*</p>
+                        </div>
+                        <p class="text-white font-medium text-lg mt-4">
+                            ¿Qué puedes hacer para atraer clientes sin caer en multas?
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="py-20 bg-white" id="servicios">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-navy-950 mb-6">Como agencia revisamos que <span class="text-brandOrange-500">evites multas</span> y al mismo tiempo puedas vender más.</h2>
+                <p class="text-lg text-gray-600">
+                    No se trata de censurar tu menú, se trata de blindarlo legalmente. Te damos las herramientas para que tu marketing sea agresivo en ventas pero seguro ante la ley.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <!-- Feature 1 -->
+                <div class="bg-slate-50 border border-slate-200 rounded-2xl p-8 hover:shadow-xl transition-shadow duration-300">
+                    <div class="w-14 h-14 bg-navy-900 rounded-xl flex items-center justify-center mb-6 shadow-md">
+                        <svg class="w-7 h-7 text-brandOrange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-navy-950 mb-3">Revisión Exhaustiva</h3>
+                    <p class="text-gray-600">Auditamos tu menú actual, redes sociales y publicidad física buscando cualquier foco rojo que PROFECO pueda usar en tu contra.</p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="bg-slate-50 border border-slate-200 rounded-2xl p-8 hover:shadow-xl transition-shadow duration-300 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-brandOrange-500 text-white text-xs font-bold px-3 py-1 rounded-bl-lg">CLAVE</div>
+                    <div class="w-14 h-14 bg-navy-900 rounded-xl flex items-center justify-center mb-6 shadow-md">
+                        <svg class="w-7 h-7 text-brandOrange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-navy-950 mb-3">Palabras Permitidas</h3>
+                    <p class="text-gray-600">Conoce las palabras e imágenes que <strong>SÍ puede usar tu establecimiento</strong> para generar deseo en tus clientes y evitar multas.</p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="bg-slate-50 border border-slate-200 rounded-2xl p-8 hover:shadow-xl transition-shadow duration-300">
+                    <div class="w-14 h-14 bg-navy-900 rounded-xl flex items-center justify-center mb-6 shadow-md">
+                        <svg class="w-7 h-7 text-brandOrange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-navy-950 mb-3">Implementación Rápida</h3>
+                    <p class="text-gray-600">Te entregamos una guía práctica y asesoría para que apliques los cambios inmediatamente, sin detener las operaciones de tu bar o club.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-gradient-to-r from-brandOrange-500 to-brandOrange-600 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="bg-white rounded-2xl shadow-2xl overflow-hidden">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 p-10 lg:p-16">
+                    <div class="flex flex-col justify-center">
+                        <div class="inline-flex items-center space-x-2 bg-brandOrange-500/20 text-brandOrange-600 px-4 py-2 rounded-full font-medium mb-4 border border-brandOrange-500/30 w-fit">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C6.5 6.253 2 10.998 2 17s4.5 10.747 10 10.747c5.5 0 10-4.998 10-10.747S17.5 6.253 12 6.253z"></path></svg>
+                            <span>Recurso Gratuito</span>
+                        </div>
+                        <h2 class="text-3xl md:text-4xl font-bold text-navy-950 mb-6">
+                            Descarga la Guía Completa: <span class="text-brandOrange-600">Evita Multas FIFA</span>
+                        </h2>
+                        <p class="text-lg text-gray-700 mb-8">
+                            Aprende exactamente qué palabras están prohibidas, cuáles puedes usar, frases efectivas para tu negocio y todas las regulaciones FIFA para 2026.
+                        </p>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-center text-gray-700">
+                                <svg class="w-6 h-6 text-brandOrange-500 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span>Palabras prohibidas y permitidas</span>
+                            </li>
+                            <li class="flex items-center text-gray-700">
+                                <svg class="w-6 h-6 text-brandOrange-500 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span>Frases efectivas para restaurantes y bares</span>
+                            </li>
+                            <li class="flex items-center text-gray-700">
+                                <svg class="w-6 h-6 text-brandOrange-500 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span>Multas y penalizaciones por incumplimiento</span>
+                            </li>
+                            <li class="flex items-center text-gray-700">
+                                <svg class="w-6 h-6 text-brandOrange-500 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span>Requisitos para eventos no comerciales</span>
+                            </li>
+                        </ul>
+                        <a href="evita-multas-fifa.html" class="inline-block bg-brandOrange-600 hover:bg-brandOrange-700 text-white font-bold py-4 px-8 rounded-full text-lg transition-transform transform hover:scale-105 shadow-lg w-fit">
+                            Leer Guía Completa
+                        </a>
+                    </div>
+                    
+                    <div class="flex items-center justify-center">
+                        <div class="bg-navy-950 rounded-2xl p-10 text-center">
+                            <div class="text-6xl mb-6">⚽</div>
+                            <h3 class="text-2xl font-bold text-white mb-4">Regulaciones FIFA 2026</h3>
+                            <div class="space-y-4 text-gray-300">
+                                <div class="bg-brandOrange-600/20 border border-brandOrange-500 rounded-lg p-4">
+                                    <p class="text-sm font-semibold text-brandOrange-400">MULTA MÁXIMA</p>
+                                    <p class="text-3xl font-bold text-white mt-2">29.3M</p>
+                                    <p class="text-xs text-gray-300">pesos mexicanos</p>
+                                </div>
+                                <p class="text-sm">Además: decomiso de equipos y clausura hasta 90 días</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-navy-900 relative" id="comprar">
+        <!-- Background shapes -->
+        <div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+            <div class="absolute -top-24 -left-24 w-96 h-96 bg-brandOrange-500 opacity-10 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-0 right-0 w-96 h-96 bg-blue-500 opacity-10 rounded-full blur-3xl"></div>
+        </div>
+
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="bg-white rounded-3xl shadow-2xl overflow-hidden">
+                <div class="grid grid-cols-1 md:grid-cols-5">
+                    
+                    <!-- Info Column -->
+                    <div class="md:col-span-3 p-10 lg:p-12 bg-white">
+                        <h3 class="text-3xl font-extrabold text-navy-950 mb-4">Auditoría + Catálogo de Prevención PROFECO</h3>
+                        <p class="text-gray-600 mb-6">
+                            No juegues a la ruleta rusa con el patrimonio de tu negocio. Adquiere nuestro paquete de revisión integral hoy mismo.
+                        </p>
+                        
+                        <ul class="space-y-4 mb-8">
+                            <li class="flex items-center text-gray-700">
+                                <svg class="w-6 h-6 text-brandOrange-500 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span>Análisis de tu menú actual y redes sociales</span>
+                            </li>
+                            <li class="flex items-center text-gray-700">
+                                <svg class="w-6 h-6 text-brandOrange-500 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span>Lista oficial de palabras <strong>aprobadas</strong></span>
+                            </li>
+                            <li class="flex items-center text-gray-700">
+                                <svg class="w-6 h-6 text-brandOrange-500 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span>Guía de banco de imágenes sin riesgo legal</span>
+                            </li>
+                            <li class="flex items-center text-gray-700">
+                                <svg class="w-6 h-6 text-brandOrange-500 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span>Qué puedes hacer para atraer clientes a tu establecimiento</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Stripe Checkout Column -->
+                    <div class="md:col-span-2 bg-slate-50 p-10 flex flex-col justify-center items-center border-t md:border-t-0 md:border-l border-slate-200">
+                        <div class="text-center mb-6">
+                            <p class="text-sm font-semibold text-brandOrange-600 uppercase tracking-wide mb-2">Pago Único y Seguro</p>
+                            <p class="text-gray-500 text-sm">Acceso inmediato al servicio e inicio de la auditoría.</p>
+                        </div>
+                        
+                        <!-- Stripe Buy Button Integration -->
+                        <div class="w-full flex justify-center hover:scale-105 transition-transform duration-300">
+                            <stripe-buy-button
+                                buy-button-id="buy_btn_1Tg7l0LfPfVmbB2ShszJKXrT"
+                                publishable-key="pk_live_51MvqNwLfPfVmbB2S1HY4hgjejLAiQ3lzdBPuD3y7Urc9Jc44cdrPW97xD9wouIIoxvsYJ4hIJOe4lX75hwJLKrgT00DqaaS4B5"
+                            >
+                            </stripe-buy-button>
+                        </div>
+                        
+                        <div class="mt-6 flex items-center justify-center space-x-2 text-xs text-gray-400">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                            <span>Pago cifrado mediante Stripe</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            
+            <p class="text-center text-gray-400 mt-8 text-sm max-w-2xl mx-auto">
+                *Una multa de PROFECO puede llegar hasta los 23 millones de pesos dependiendo de la gravedad de la infracción y el capital del negocio. Prevenir cuesta una fracción de eso.
+            </p>
+        </div>
+    </section>
+
+    <footer class="bg-navy-950 text-gray-400 py-12 border-t border-navy-800 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
+            <div class="flex items-center space-x-2 mb-4 md:mb-0">
+                <svg class="w-6 h-6 text-brandOrange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                </svg>
+                <span class="font-bold text-lg text-white">marketing y negocios digitales <span class="text-brandOrange-500">+100 clientes satisfechos</span></span>
+            </div>
+            <div class="text-sm">
+                &copy; 2026 marketing y negocios digitales. Todos los derechos reservados. Consultoría Preventiva.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
